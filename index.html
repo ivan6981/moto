@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>二輪買賣平台 - Vibe Coding 實驗</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+
+    <nav class="bg-black text-white p-4 shadow-lg">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-2xl font-bold">小瑋二輪 <span class="text-yellow-400 text-sm">Moto Mall</span></h1>
+            <div class="space-x-4">
+                <a href="#" class="hover:text-yellow-400">所有車款</a>
+                <a href="#" class="hover:text-yellow-400">我要賣車</a>
+                <a href="#" class="bg-yellow-400 text-black px-4 py-2 rounded-full font-bold">登入後台</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="container mx-auto mt-8 p-4 bg-white rounded-lg shadow-sm">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+            <input type="text" placeholder="搜尋車型（如：Force 155）" class="border p-2 rounded">
+            <select class="border p-2 rounded">
+                <option>所有品牌</option>
+                <option>SYM 三陽</option>
+                <option>KYMCO 光陽</option>
+                <option>YAMAHA 山葉</option>
+            </select>
+            <select class="border p-2 rounded">
+                <option>價格範圍</option>
+                <option>3 萬以下</option>
+                <option>3-6 萬</option>
+                <option>6 萬以上</option>
+            </select>
+            <button class="bg-blue-600 text-white font-bold py-2 rounded hover:bg-blue-700">開始找車</button>
+        </div>
+    </section>
+
+    <main class="container mx-auto mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 pb-20">
+        
+        <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow">
+            <div class="h-48 bg-gray-300 relative">
+                <img src="https://images.unsplash.com/photo-1558981403-c5f91cbba527?auto=format&fit=crop&w=500&q=60" alt="機車" class="w-full h-full object-cover">
+                <span class="absolute top-2 left-2 bg-red-600 text-white text-xs px-2 py-1 rounded">今日新上架</span>
+            </div>
+            <div class="p-4">
+                <h3 class="text-lg font-bold">YAMAHA Force 155 - 黑色版</h3>
+                <p class="text-gray-500 text-sm">2023 年 / 里程 5000km / 台北市</p>
+                <div class="mt-4 flex justify-between items-center">
+                    <span class="text-xl font-extrabold text-red-600">NT$ 78,000</span>
+                    <a href="detail.html" class="border border-blue-600 text-blue-600 px-4 py-1 rounded-lg hover:bg-blue-50 text-center inline-block">查看詳情</a>
+                </div>
+            </div>
+        </div>
+        <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow">
+            <div class="h-48 bg-gray-300 relative">
+                <img src="https://images.unsplash.com/photo-1558981403-c5f91cbba527?auto=format&fit=crop&w=500&q=60" alt="機車" class="w-full h-full object-cover">
+                <span class="absolute top-2 left-2 bg-red-600 text-white text-xs px-2 py-1 rounded">今日新上架</span>
+            </div>
+            <div class="p-4">
+                <h3 class="text-lg font-bold">YAMAHA 勁六 - 黑色版</h3>
+                <p class="text-gray-500 text-sm">2023 年 / 里程 5000km / 台北市</p>
+                <div class="mt-4 flex justify-between items-center">
+                    <span class="text-xl font-extrabold text-red-600">NT$ 58,000</span>
+                    <button class="border border-blue-600 text-blue-600 px-4 py-1 rounded-lg hover:bg-blue-50">查看詳情</button>
+                </div>
+            </div>
+        </div>
+
+        </main>
+
+</body>
+</html>

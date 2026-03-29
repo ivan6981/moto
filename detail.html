@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>車輛詳情 - YAMAHA Force 155</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50">
+
+    <nav class="bg-black text-white p-4">
+        <div class="container mx-auto font-bold"><a href="index.html">← 返回車輛列表</a></div>
+    </nav>
+
+    <main class="container mx-auto mt-8 p-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 bg-white p-6 rounded-xl shadow-sm">
+            <div class="bg-gray-200 h-80 rounded-lg overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1558981403-c5f91cbba527?auto=format&fit=crop&w=800&q=80" alt="Force 155" class="w-full h-full object-cover">
+            </div>
+            
+            <div>
+                <h1 class="text-3xl font-bold mb-2">YAMAHA Force 155 黑色版</h1>
+                <p class="text-gray-500 mb-4">2023 年出廠 | 里程 5,000 km | 所在地：台中市</p>
+                <div class="text-4xl font-extrabold text-red-600 mb-6">NT$ 78,000</div>
+                <button class="w-full bg-green-500 text-white font-bold py-3 rounded-lg hover:bg-green-600 mb-2">LINE 預約看車</button>
+                <button class="w-full border border-gray-300 text-gray-700 font-bold py-3 rounded-lg hover:bg-gray-100">試算分期</button>
+            </div>
+        </div>
+
+        <div class="mt-8 bg-white rounded-xl shadow-sm overflow-hidden">
+            <div class="flex border-b">
+                <button onclick="switchTab('desc')" class="flex-1 py-4 font-bold text-blue-600 border-b-4 border-blue-600 focus:outline-none tab-btn" id="btn-desc">車況說明</button>
+                <button onclick="switchTab('specs')" class="flex-1 py-4 font-bold text-gray-500 hover:text-blue-600 focus:outline-none tab-btn" id="btn-specs">詳細規格</button>
+            </div>
+
+            <div id="tab-desc" class="p-6 tab-content block">
+                <h3 class="font-bold text-lg mb-2">老闆掛保證</h3>
+                <p class="text-gray-700 leading-relaxed">這台車前車主非常顧車，皆在原廠保養。外觀無倒無摔，僅有正常使用痕跡。消耗品（皮帶、煞車皮）剛換新，買回去直接可以環島。全車原廠無改裝，非常適合通勤代步！</p>
+            </div>
+
+            <div id="tab-specs" class="p-6 tab-content hidden">
+                <ul class="space-y-2 text-gray-700">
+                    <li><span class="font-bold w-24 inline-block">排氣量：</span>155 cc</li>
+                    <li><span class="font-bold w-24 inline-block">引擎形式：</span>水冷四行程單缸</li>
+                    <li><span class="font-bold w-24 inline-block">煞車系統：</span>前後碟煞 + ABS</li>
+                    <li><span class="font-bold w-24 inline-block">前輪胎：</span>120/70-13</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="mt-12 mb-20">
+            <h2 class="text-2xl font-bold mb-6 border-l-4 border-yellow-400 pl-3">您可能也會喜歡 (其他案件)</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                <div class="bg-white rounded-lg shadow p-4 border hover:border-blue-500 cursor-pointer">
+                    <div class="h-32 bg-gray-200 rounded mb-3 overflow-hidden">
+                         <img src="https://images.unsplash.com/photo-1449426468159-d96dbf08f19f?auto=format&fit=crop&w=300&q=60" class="w-full h-full object-cover">
+                    </div>
+                    <h4 class="font-bold">YAMAHA SMAX 155</h4>
+                    <div class="text-red-600 font-bold mt-2">NT$ 65,000</div>
+                </div>
+                <div class="bg-white rounded-lg shadow p-4 border hover:border-blue-500 cursor-pointer">
+                    <div class="h-32 bg-gray-200 rounded mb-3 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?auto=format&fit=crop&w=300&q=60" class="w-full h-full object-cover">
+                    </div>
+                    <h4 class="font-bold">SYM DRG 158</h4>
+                    <div class="text-red-600 font-bold mt-2">NT$ 92,000</div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function switchTab(tabName) {
+            // 隱藏所有內容
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('block'));
+            
+            // 重置所有按鈕樣式
+            document.querySelectorAll('.tab-btn').forEach(el => {
+                el.classList.remove('text-blue-600', 'border-b-4', 'border-blue-600');
+                el.classList.add('text-gray-500');
+            });
+
+            // 顯示選中的內容並標亮按鈕
+            document.getElementById('tab-' + tabName).classList.remove('hidden');
+            document.getElementById('tab-' + tabName).classList.add('block');
+            
+            let activeBtn = document.getElementById('btn-' + tabName);
+            activeBtn.classList.remove('text-gray-500');
+            activeBtn.classList.add('text-blue-600', 'border-b-4', 'border-blue-600');
+        }
+    </script>
+</body>
+</html>
