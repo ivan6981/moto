@@ -5,5 +5,12 @@
     "price": 59000,
     "year": 2020,
     "image_url": "https://cdn.store-assets.com/s/1336053/i/100211876.jpeg"
+  },
+  {
+    "id": 6,
+    "name": "rts",
+    "price": 12,
+    "year": 12,
+    "image_url": ""
   }
 ]
