@@ -38,38 +38,51 @@
         </div>
     </section>
 
-    <main class="container mx-auto mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 pb-20">
+    <main class="container mx-auto mt-8 p-4 mb-20">
+        <h2 class="text-2xl font-bold mb-6 border-l-4 border-yellow-400 pl-3">今日最新上架</h2>
         
-        <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow">
-            <div class="h-48 bg-gray-300 relative">
-                <img src="https://images.unsplash.com/photo-1558981403-c5f91cbba527?auto=format&fit=crop&w=500&q=60" alt="機車" class="w-full h-full object-cover">
-                <span class="absolute top-2 left-2 bg-red-600 text-white text-xs px-2 py-1 rounded">今日新上架</span>
-            </div>
-            <div class="p-4">
-                <h3 class="text-lg font-bold">YAMAHA Force 155 - 黑色版</h3>
-                <p class="text-gray-500 text-sm">2023 年 / 里程 5000km / 台北市</p>
-                <div class="mt-4 flex justify-between items-center">
-                    <span class="text-xl font-extrabold text-red-600">NT$ 78,000</span>
-                    <a href="detail.html" class="border border-blue-600 text-blue-600 px-4 py-1 rounded-lg hover:bg-blue-50 text-center inline-block">查看詳情</a>
-                </div>
-            </div>
+        <!-- 這裡變成一個「空箱子」，我們給它一個 ID 叫做 bike-list -->
+        <div id="bike-list" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <!-- JavaScript 會把資料塞進這裡，現在先放個載入中的文字 -->
+            <p class="text-gray-500 col-span-full text-center py-10">資料載入中...</p>
         </div>
-        <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow">
-            <div class="h-48 bg-gray-300 relative">
-                <img src="https://images.unsplash.com/photo-1558981403-c5f91cbba527?auto=format&fit=crop&w=500&q=60" alt="機車" class="w-full h-full object-cover">
-                <span class="absolute top-2 left-2 bg-red-600 text-white text-xs px-2 py-1 rounded">今日新上架</span>
-            </div>
-            <div class="p-4">
-                <h3 class="text-lg font-bold">YAMAHA 勁六 - 黑色版</h3>
-                <p class="text-gray-500 text-sm">2023 年 / 里程 5000km / 台北市</p>
-                <div class="mt-4 flex justify-between items-center">
-                    <span class="text-xl font-extrabold text-red-600">NT$ 58,000</span>
-                    <button class="border border-blue-600 text-blue-600 px-4 py-1 rounded-lg hover:bg-blue-50">查看詳情</button>
-                </div>
-            </div>
-        </div>
+    </main>
+    
+    <!-- 這是首頁的大腦：負責去抓 data.json 然後做成卡片 -->
+    <script>
+        // 1. 告訴瀏覽器去抓取 data.json 檔案
+        fetch('data.json')
+            .then(response => response.json()) // 解開 JSON 包裹
+            .then(data => {
+                const container = document.getElementById('bike-list');
+                let html = ''; // 準備一個空字串來裝卡片
 
-        </main>
+                // 2. 用迴圈把每一台車的資料做成精美卡片
+                data.forEach(bike => {
+                    html += `
+                    <div class="bg-white rounded-lg shadow-sm border hover:shadow-md transition-shadow duration-200 overflow-hidden">
+                        <div class="h-48 bg-gray-200 relative">
+                             <img src="${bike.image_url}?auto=format&fit=crop&w=500&q=60" alt="${bike.name}" class="w-full h-full object-cover">
+                             <span class="absolute top-2 left-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">今日上架</span>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-bold text-lg mb-1 truncate">${bike.name}</h3>
+                            <p class="text-sm text-gray-500 mb-3">${bike.year} 年出廠</p>
+                            <div class="text-red-600 font-extrabold text-xl mb-4">NT$ ${bike.price}</div>
+                            <a href="public_pages/bike_${bike.id}.html" class="block w-full text-center bg-blue-50 text-blue-600 font-bold py-2 rounded-lg hover:bg-blue-100 transition-colors">查看詳情</a>
+                        </div>
+                    </div>
+                    `;
+                });
+
+                // 3. 把做好的所有卡片，一次塞進剛剛的空箱子裡
+                container.innerHTML = html;
+            })
+            .catch(error => {
+                console.error("抓取資料失敗:", error);
+                document.getElementById('bike-list').innerHTML = '<p class="text-red-500 col-span-full text-center">無法載入車輛資料，請稍後再試。</p>';
+            });
+    </script>
 
 </body>
 </html>
