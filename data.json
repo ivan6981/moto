@@ -12,5 +12,12 @@
     "price": 12,
     "year": 12,
     "image_url": ""
+  },
+  {
+    "id": 7,
+    "name": "jet",
+    "price": 890,
+    "year": "",
+    "image_url": ""
   }
 ]
